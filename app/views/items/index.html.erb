@@ -1,0 +1,22 @@
+<%= form_tag(import_items_path, multipart: true) do %>
+<%= file_field_tag :file, required: true %>
+<%= submit_tag( "Import" ) %>
+<% end %>
+
+<h2 style="color: greenyellow;"><%= notice %></h2>
+<% unless @items.blank? %>
+	<h1>Items</h1>
+	<table>
+		<tr>
+			<th>ProductId</th>
+			<th>Condition</th>
+			<th>SKU</th>
+			<th>Title</th>
+			<th>Qty</th>
+			<th>Price</th>
+		</tr>
+		<% @items.each do |item| %>
+		<%= render item %>
+		<% end %>
+	</table>
+<% end %>
